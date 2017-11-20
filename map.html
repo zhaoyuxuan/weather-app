@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <style>
+      #map {
+        height: 100%;
+  		position: absolute; 
+  		top: 0; 
+  		bottom: -200px; 
+  		left: 0; 
+  		right: 0; 
+  		z-index: 0;
+       }
+       #container {
+  	z-index: 100;
+  	position: relative;
+  	text-align: center;
+  	border:none;
+  	outline: none;
+  	padding: 20dp;
+}
+textarea:focus, input:focus{
+    outline: none;
+}
+    </style>
+  </head>
+  <body>
+    <div id="map"></div>
+
+   	<div id='container'>
+      <input placeholder="Enter the weather" id="location_input"></input>
+    </div>
+    <script>
+      function initMap() {
+        var uluru = {lat: -25.363, lng: 131.044};
+        var map = new google.maps.Map(document.getElementById('map'), {
+          zoom: 4,
+          center: uluru,
+          streetViewControl: false,
+          mapTypeControl: false
+        });
+        map.setOptions({
+        zoomControl: false,
+        gestureHandling: 'none'
+    	});
+        var marker = new google.maps.Marker({
+          position: uluru,
+          map: map
+        });
+      }
+    </script>
+    <script async defer
+    src="https://maps.googleapis.com/maps/api/js?key=AIzaSyBbeK2be4_yk5PnDfBdMhxqAB5YNfLbyuA&callback=initMap">
+    </script>
+
+
+  </body>
+</html>
+
+
+
+
+
