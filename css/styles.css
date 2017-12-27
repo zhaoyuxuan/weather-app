@@ -1,0 +1,14 @@
+#title{
+	font-family:"Apercu";
+	padding-top: 2%;
+	font-size: 1.5em;
+}
+#inputcity{
+	 background: transparent;
+	 border: none;
+	 font-size: 2em;
+	 outline:none;
+   	 border-bottom: 1px solid #000000;
+   	 padding-top: 3%;
+
+}
