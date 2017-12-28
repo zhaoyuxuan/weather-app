@@ -2,13 +2,22 @@
 	font-family:"Apercu";
 	padding-top: 2%;
 	font-size: 1.5em;
+	letter-spacing: 10px;
+	text-shadow: -1px 2px 20px grey;
 }
 #inputcity{
 	 background: transparent;
 	 border: none;
 	 font-size: 2em;
+	 width: 30%;
 	 outline:none;
    	 border-bottom: 1px solid #000000;
    	 padding-top: 3%;
 
+}
+ul.ui-autocomplete {
+    list-style: none;
+    list-style-type: none;
+    padding: 0px;
+    margin: 0px;
 }
