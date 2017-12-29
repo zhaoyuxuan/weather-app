@@ -8,11 +8,15 @@
 #inputcity{
 	 background: transparent;
 	 border: none;
-	 font-size: 2em;
+	 font-size: 1.6em;
+	 line-height: 2em;
 	 width: 30%;
+
 	 outline:none;
-   	 border-bottom: 1px solid #000000;
-   	 padding-top: 3%;
+	 background-color: #F9F9F9;
+   	 /*border-bottom: 1px solid #000000;*/
+   	 margin-top: 3%;
+   	 
 
 }
 ul.ui-autocomplete {
@@ -20,4 +24,9 @@ ul.ui-autocomplete {
     list-style-type: none;
     padding: 0px;
     margin: 0px;
+}
+
+.ui-helper-hidden-accessible { display:none; }
+.ui-menu .ui-menu-item a{
+    background-color:#F9F9F9;
 }

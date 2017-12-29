@@ -17,7 +17,7 @@
       </div>
 
       <div class = "row justify-content-center" >
-        <input type="text" id ="inputcity" placeholder="Enter your City" list="cityList"onclick="getcityoption()" onkeydown="check()"></input>
+        <input type="text" id ="inputcity" placeholder="Enter City" list="cityList" onkeydown="check()"></input>
         <datalist id="cityList"></datalist>
   
         </script>
@@ -46,24 +46,36 @@
             }
         });
   }
+  window.onload = getcityoption;
 </script>
 <script type="text/javascript">
 
   function check(){
     var citydata = JSON.parse(localStorage.citydata);
-    console.log(citydata);
+    
     $( "#inputcity").autocomplete({
       source: function(request, response) {
         var results = $.ui.autocomplete.filter(citydata, request.term);
         response(results.slice(0, 10));
-      messages: {
-        noResults: '',
-        results: function() {}
-    }
+      
     }
       
     });
+
+  
   }
+  $.ui.autocomplete.filter = function (array, term) {
+    var matcher = new RegExp("^" + $.ui.autocomplete.escapeRegex(term), "i");
+    return $.grep(array, function (value) {
+        return matcher.test(value.label || value.value || value);
+    });
+
+};
+$("#inputcity").on('keyup', function (e) {
+    if (e.keyCode == 13) {
+        // Do something
+    }
+});
 </script>
 </html>
 
