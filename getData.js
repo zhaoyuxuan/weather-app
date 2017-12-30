@@ -1,31 +1,32 @@
-const https = require('https');
+const https = require('http');
 var weather = require('openweather-apis');
-weather.setAPPID("27fe580edf919569d85245294e9ae834");
-weather.setCity("London");
+var url = "http://samples.openweathermap.org/data/2.5/forecast?id=524901&appid=27fe580edf919569d85245294e9ae834";
+
+https.get(url, (res) => {
+  let body ='';
+
+  res.on('data', (d) => {
+    body += d;
+  });
+  res.on('end',() =>{
+  	body = JSON.parse(body);
+  	console.log(body);
+  });
+
+}).on('error', (e) => {
+  console.error(e);
+});
+
+// weather.setAPPID("27fe580edf919569d85245294e9ae834");
+// weather.setCity("Edmonton");
+//  weather.setLang('en');
 
 
+//  weather.getWeatherForecastForDays(1, function(err, obj){
+//         console.log(obj);
+//     });
 
- weather.getAllWeather(function(err, JSONObj){
-        console.log(JSONObj);
-    });
-
  
-// https.get('https://api.nasa.gov/planetary/apod?api_key=DEMO_KEY', (resp) => {
-//   let data = '';
- 
-//   // A chunk of data has been recieved.
-//   resp.on('data', (chunk) => {
-//     data += chunk;
-//   });
- 
-//   // The whole response has been received. Print out the result.
-//   resp.on('end', () => {
-//     console.log(JSON.parse(data).explanation);
-//   });
- 
-// }).on("error", (err) => {
-//   console.log("Error: " + err.message);
-// });
 
 
 
