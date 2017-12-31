@@ -34,7 +34,7 @@
 <script type="text/javascript">
   function getcityoption(){
     var formData = new FormData();
-    // formData.set("userInput", userInput);
+    formData.set("userInput", "cityname");
      $.ajax({
             type: "POST",
             url: "/citydata",
@@ -49,21 +49,38 @@
   window.onload = getcityoption;
 </script>
 <script type="text/javascript">
+  var citydata = JSON.parse(localStorage.citydata);
+  var searchData = [];
+  for (cityid in citydata){
+    searchData.push({label:citydata[cityid], value:cityid})
+  }
 
   function check(){
-    var citydata = JSON.parse(localStorage.citydata);
     
     $( "#inputcity").autocomplete({
       source: function(request, response) {
-        var results = $.ui.autocomplete.filter(citydata, request.term);
+        var results = $.ui.autocomplete.filter(searchData, request.term);
         response(results.slice(0, 10));
       
-    }
+    },
+      select: function(event, ui) { 
+       event.preventDefault();
+      $("#inputcity").val(ui.item.label);
+
+        
+      var input = ui.item.value;
+      // TODO attach label to menu
+      console.log("value"+ui.item.value);
+      console.log("label"+ui.item.label);
+
       
+         }
     });
 
   
   }
+
+  
   $.ui.autocomplete.filter = function (array, term) {
     var matcher = new RegExp("^" + $.ui.autocomplete.escapeRegex(term), "i");
     return $.grep(array, function (value) {
@@ -71,11 +88,7 @@
     });
 
 };
-$("#inputcity").on('keyup', function (e) {
-    if (e.keyCode == 13) {
-        // Do something
-    }
-});
+
 </script>
 </html>
 

@@ -24,7 +24,19 @@ ul.ui-autocomplete {
     list-style-type: none;
     padding: 0px;
     margin: 0px;
+   
 }
+
+/*.ui-menu .ui-menu-item a.ui-state-hover,{
+   background-color: red;
+}*/
+
+/*ul.ui-autocomplete li:hover a
+{
+    border:none;
+    background-color: #05e5e5;
+    background-image: none;
+}*/
 
 .ui-helper-hidden-accessible { display:none; }
 .ui-menu .ui-menu-item a{
