@@ -23,11 +23,8 @@
         </script>
 
       </div>
-
-
     </div>
-       
-      
+          
   </body>
 
 
@@ -51,43 +48,42 @@
 <script type="text/javascript">
   var citydata = JSON.parse(localStorage.citydata);
   var searchData = [];
-  for (cityid in citydata){
-    searchData.push({label:citydata[cityid], value:cityid})
+  for (cityid in citydata) {
+      searchData.push({
+          label: citydata[cityid],
+          value: cityid
+      })
   }
 
-  function check(){
-    
-    $( "#inputcity").autocomplete({
-      source: function(request, response) {
-        var results = $.ui.autocomplete.filter(searchData, request.term);
-        response(results.slice(0, 10));
-      
-    },
-      select: function(event, ui) { 
-       event.preventDefault();
-      $("#inputcity").val(ui.item.label);
+  function check() {
 
-        
-      var input = ui.item.value;
-      // TODO attach label to menu
-      console.log("value"+ui.item.value);
-      console.log("label"+ui.item.label);
+      $("#inputcity").autocomplete({
+          source: function(request, response) {
+              var results = $.ui.autocomplete.filter(searchData, request.term);
+              response(results.slice(0, 10));
 
-      
-         }
-    });
+          },
+          select: function(event, ui) {
+              event.preventDefault();
+              $("#inputcity").val(ui.item.label);
+              var input = ui.item.value;
+              // TODO attach label to menu
+              console.log("value" + ui.item.value);
+              console.log("label" + ui.item.label);
 
-  
+          }
+      });
+
+
   }
-
   
-  $.ui.autocomplete.filter = function (array, term) {
-    var matcher = new RegExp("^" + $.ui.autocomplete.escapeRegex(term), "i");
-    return $.grep(array, function (value) {
-        return matcher.test(value.label || value.value || value);
-    });
+  $.ui.autocomplete.filter = function(array, term) {
+      var matcher = new RegExp("^" + $.ui.autocomplete.escapeRegex(term), "i");
+      return $.grep(array, function(value) {
+          return matcher.test(value.label || value.value || value);
+      });
 
-};
+  };
 
 </script>
 </html>
