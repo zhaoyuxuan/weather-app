@@ -7,6 +7,7 @@ var multer = require('multer');
 var upload = multer();
 var getData = require('./getData');
 
+
 app.use(bodyParser.urlencoded({
     extended: true
 }));
@@ -25,11 +26,13 @@ app.get('/', function(request, response) {
 });
 
 app.post('/weatherdata', function(request, response) {
-    var cityId = req.body.userInput;
-    url = "http://samples.openweathermap.org/data/2.5/forecast?id=" + cityId + "&appid=27fe580edf919569d85245294e9ae834";
+    var cityId = request.body.userInput;
+    console.log(cityId);
+    url = "http://api.openweathermap.org/data/2.5/forecast?id="+ cityId + "&APPID=27fe580edf919569d85245294e9ae834&cnt=3";
 
-    getData.getWeatherData(url, function(response) {
-        console.log(response);
+    getData.getWeatherData(url, function(res) {
+        response.send(res);
+        console.log(res);
     });
 });
 
@@ -42,7 +45,6 @@ app.post('/citydata', function(req, res) {
         if (err) throw err;
         citydata = JSON.parse(data);
     });
-
 
     res.send(citydata);
 

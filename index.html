@@ -4,6 +4,10 @@
     <meta charset="utf-8">
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-beta.2/css/bootstrap.min.css" integrity="sha384-PsH8R72JQ3SOdhVi3uxftmaW6Vc51MKb0q5P2rRUpPvrszuE4W1povHYgTpBfshb" crossorigin="anonymous">
     <link rel="stylesheet" href="/css/styles.css">
+    <link rel="stylesheet" href="/css/weather-icons-wind.css">
+    <link rel="stylesheet" href="/css/weather-icons.css">
+    <link rel="stylesheet" href="/css/weather-icons-wind.min.css">
+    <link rel="stylesheet" href="/css/weather-icons.min.css">
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
     <script src="https://code.jquery.com/jquery-1.12.4.js"></script>
     <script src="https://code.jquery.com/ui/1.12.1/jquery-ui.js"></script>
@@ -19,15 +23,16 @@
       <div class = "row justify-content-center" >
         <input type="text" id ="inputcity" placeholder="Enter City" list="cityList" onkeydown="check()"></input>
       </div>
-      <div class = "row" style= "margin-top: 10%">
+      <div class = "row infogroup" style= "margin-top: 10%; display:none">
         <div class = col-md-1></div>
         <div class = "col-md-2 text-center center-block"  id="first weather">
-          <img id ="image1" src="../weathericon/if_sun_2016199.svg" width="100vw" height="100vh" />
-          <div class = "maintemperature">-80˚C</div>
-          <div class = "windspeed" style="font-weight: bold;">Windspeed: &nbsp;-100˚C</div>
-          <div class = "humidity" style="font-weight: bold;">Humidity: &nbsp;-100˚C</div>
+          <img id ="image1" src="../weathericon/sun.svg" width="100vw" height="100vh" />
+          <div class = "maintemperature" id="mainfirst">-80˚C</div>
+          <div class = "windspeed" id= "windspeed1" style="font-weight: bold;">Windspeed: &nbsp;-100˚C</div>
+          <div class = "humidity" id="humidity1" style="font-weight: bold;">Humidity: &nbsp;-100˚C</div>
           <div style="padding-bottom: 1em;"></div>
           <div class = "weatherstate text-center" id="weatherstate1">Sunny</div>
+          <i class="wi wi-day: clear" id="icon1"></i>
         </div>
 
         <div class = col-md-1></div>
@@ -75,19 +80,38 @@
           select: function(event, ui) {
               event.preventDefault();
               $("#inputcity").val(ui.item.label);
-              var input = ui.item.value;
-              // TODO attach label to menu
-              console.log("value" + ui.item.value);
-              console.log("label" + ui.item.label);
+              var inputid = ui.item.value;
+              console.log(inputid);
+              var formData = new FormData();
+              formData.set("userInput", inputid);
+              $.ajax({
+                  type: "POST",
+                  url: "/weatherdata",
+                  data: formData,
+                  contentType: false,
+                  processData: false,
+                success: function(response) {
+                        $(".infogroup").show();
+                        $("#mainfirst").text(Math.round(response[0]["main"]["temp"] - 273.15) + "˚C");
+                        $("#windspeed1").text("Windspeed: " + response[0]["wind"]["speed"] + "m/s");
+                        $("#humidity1").text("Humidity: " + response[0]["main"]["humidity"]);
+                        $("#weatherstate1").text(response[0]["weather"][0]["main"]);
+                        $.getJSON('icon.json', function(data) {
+                            console.log(data);
+
+                        });
+
+                    
+                  }
+              });
+
 
           },
           focus: function(event, ui) {
               event.preventDefault();
               $("#inputcity").val(ui.item.label);
           }
-});
-
-
+      });
   }
   
   $.ui.autocomplete.filter = function(array, term) {
