@@ -5,6 +5,11 @@
 	letter-spacing: 10px;
 	text-shadow: -1px 2px 20px grey;
 }
+.windspeed{
+	font-weight: bold;
+	/*margin-left: 10%;*/
+	padding-top: 5%;
+}
 #inputcity{
 	 background: transparent;
 	 border: none;
@@ -16,8 +21,18 @@
 	 background-color: #F9F9F9;
    	 /*border-bottom: 1px solid #000000;*/
    	 margin-top: 3%;
-   	 
+}
+.maintemperature{
+	font-size: 1.6em;
+	margin-left: 6%;
+	/*text-align: center;*/
 
+}
+.weatherstate{
+	font-weight: bold;
+}
+#image1{
+	padding-bottom: 5%;
 }
 ul.ui-autocomplete {
     list-style: none;

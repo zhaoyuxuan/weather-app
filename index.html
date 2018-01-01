@@ -18,10 +18,19 @@
 
       <div class = "row justify-content-center" >
         <input type="text" id ="inputcity" placeholder="Enter City" list="cityList" onkeydown="check()"></input>
-        <datalist id="cityList"></datalist>
-  
-        </script>
+      </div>
+      <div class = "row" style= "margin-top: 10%">
+        <div class = col-md-1></div>
+        <div class = "col-md-2 text-center center-block"  id="first weather">
+          <img id ="image1" src="../weathericon/if_sun_2016199.svg" width="100vw" height="100vh" />
+          <div class = "maintemperature">-80˚C</div>
+          <div class = "windspeed" style="font-weight: bold;">Windspeed: &nbsp;-100˚C</div>
+          <div class = "humidity" style="font-weight: bold;">Humidity: &nbsp;-100˚C</div>
+          <div style="padding-bottom: 1em;"></div>
+          <div class = "weatherstate text-center" id="weatherstate1">Sunny</div>
+        </div>
 
+        <div class = col-md-1></div>
       </div>
     </div>
           
@@ -71,8 +80,12 @@
               console.log("value" + ui.item.value);
               console.log("label" + ui.item.label);
 
+          },
+          focus: function(event, ui) {
+              event.preventDefault();
+              $("#inputcity").val(ui.item.label);
           }
-      });
+});
 
 
   }
