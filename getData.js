@@ -1,5 +1,5 @@
 const https = require('http');
-var weather = require('openweather-apis');
+
 
 module.exports = {
   getWeatherData: function getWeatherData(url, callback) {
