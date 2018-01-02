@@ -27,12 +27,11 @@ app.get('/', function(request, response) {
 
 app.post('/weatherdata', function(request, response) {
     var cityId = request.body.userInput;
-    console.log(cityId);
     url = "http://api.openweathermap.org/data/2.5/forecast?id=" + cityId + "&APPID=27fe580edf919569d85245294e9ae834&cnt=5";
 
     getData.getWeatherData(url, function(res) {
         response.send(res);
-        console.log(res);
+        
     });
 });
 

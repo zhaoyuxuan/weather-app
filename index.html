@@ -11,6 +11,9 @@
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
     <script src="https://code.jquery.com/jquery-1.12.4.js"></script>
     <script src="https://code.jquery.com/ui/1.12.1/jquery-ui.js"></script>
+    <script async defer
+    src="https://maps.googleapis.com/maps/api/js?key=AIzaSyBbeK2be4_yk5PnDfBdMhxqAB5YNfLbyuA&callback=initMap">
+    </script>
 
     <title>Weather App</title>
   </head>
@@ -72,6 +75,9 @@
         </div>
 
         <div class = col-md-1></div>
+        <div id="map"></div>
+      
+    
       </div>
     </div>
           
@@ -117,7 +123,6 @@
               event.preventDefault();
               $("#inputcity").val(ui.item.label);
               var inputid = ui.item.value;
-              console.log(inputid);
               var formData = new FormData();
               formData.set("userInput", inputid);
             $.ajax({
@@ -127,6 +132,19 @@
                 contentType: false,
                 processData: false,
                 success: function(response) {
+                    // var location = {lat: 53.55, lng: -113.47};
+                    // function initMap(location) {
+                    //     var edmonton = {lat: 53.55, lng: -113.47};
+                    //     var map = new google.maps.Map(document.getElementById('map'), {
+                    //           zoom: 7,
+                    //           center: location
+                    //       });
+
+                    //     var marker = new google.maps.Marker({
+                    //         position: location,
+                    //         map: map
+                    //     });
+                    // }
                     $(".infogroup").show();
                     for (i = 1; i < 6; i++) { 
                     $("#main"+i).text(Math.round(response[i-1]["main"]["temp"] - 273.15) + "˚C");

@@ -5,6 +5,15 @@
 	letter-spacing: 10px;
 	text-shadow: -1px 2px 20px grey;
 }
+#map {
+        height: 100%;
+  		position: absolute; 
+  		top: 0; 
+  		bottom: -200px; 
+  		left: 0; 
+  		right: 0; 
+  		z-index: 0;
+       }
 .windspeed{
 	font-weight: bold;
 	/*margin-left: 10%;*/
