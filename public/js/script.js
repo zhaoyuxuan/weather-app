@@ -80,7 +80,7 @@ $("#inputcity").autocomplete({
           
                 var latlng = new google.maps.LatLng(locationdata["lat"], locationdata["lon"]);
                 marker.setPosition(latlng);
-                map.setCenter(latLng);
+                map.setCenter(latlng);
               
                 response = response["list"];
 
