@@ -37,8 +37,6 @@ app.post('/weatherdata', function(request, response) {
 
 
 
-
-
 app.post('/citydata', function(req, res) {
     var output = [];
 

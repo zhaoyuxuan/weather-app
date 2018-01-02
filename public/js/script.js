@@ -1,6 +1,6 @@
 var map;
 var marker;
-var location = {lat: -25.363, lng: 131.044};
+var location = {"lat": -25.363, "lng": 131.044};
 function initMap(location) {
   
     map = new google.maps.Map(document.getElementById('map'), {
