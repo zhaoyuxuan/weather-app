@@ -12,7 +12,6 @@ module.exports = {
         });
         res.on('end', () => {
             body = JSON.parse(body).list;
-            console.log(body);
            
             return callback(body);
         });
