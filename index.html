@@ -11,6 +11,7 @@
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
     <script src="https://code.jquery.com/jquery-1.12.4.js"></script>
     <script src="https://code.jquery.com/ui/1.12.1/jquery-ui.js"></script>
+   
     
 
 
@@ -63,7 +64,7 @@
           <div class = "weatherstate text-center" id="weatherstate4">Sunny</div>
           
         </div>
-         <div class = "col-md-2 text-center center-block"  id="first weather">
+         <div class = "col-md-2 text-center center-block" id="first weather">
           <i id="icon5"></i>
           <div class = "maintemperature" id="main5">-80˚C</div>
           <div class = "windspeed" id= "windspeed5" style="font-weight: bold;">Windspeed: &nbsp;-100˚C</div>
@@ -71,7 +72,6 @@
           <div style="padding-bottom: 1em;"></div>
           <div class = "weatherstate text-center" id="weatherstate5">Sunny</div>
 
-          
           
         </div>
 
@@ -86,136 +86,13 @@
         </div>
         <div class = col-md-1></div>
       </div>
-      
-      <script type="text/javascript">
-      function initMap(location) {
-          console.log("map shows up");
-          var map = new google.maps.Map(document.getElementById('map'), {
-              zoom: 5,
-              center: location,
-              streetViewControl: false,
-              mapTypeControl: false
-          });
-          map.setOptions({
-              zoomControl: true,
-              gestureHandling: 'none'
-          });
-          var marker = new google.maps.Marker({
-              position: location,
-              map: map
-          });
-      }
-    </script>
-    
     </div>
-    <script async defer
+     <script async defer
     src="https://maps.googleapis.com/maps/api/js?key=AIzaSyBbeK2be4_yk5PnDfBdMhxqAB5YNfLbyuA&callback=initMap">
     </script>
-          
+     <script type="text/javascript" src="/js/script.js"></script>
   </body>
-
-
-<script type="text/javascript">
-  var citydata;
-  var searchData = [];
-
-
-  function parseData() {
-      citydata = JSON.parse(localStorage.citydata);
-      for (cityid in citydata) {
-          searchData.push({
-              label: citydata[cityid],
-              value: cityid
-          })
-      }
-  }
-
-  function getcityoption() {
-      var formData = new FormData();
-
-      $.ajax({
-          type: "POST",
-          url: "/citydata",
-          data: formData,
-          contentType: false,
-          processData: false,
-          success: function(response) {
-              localStorage.setItem("citydata", JSON.stringify(response));
-              parseData();
-          }
-      });
-  }
-
-  getcityoption();
-  function check() {
-
-      $("#inputcity").autocomplete({
-          source: function(request, response) {
-              var results = $.ui.autocomplete.filter(searchData, request.term);
-              response(results.slice(0, 10));
-
-          },
-          select: function(event, ui) {
-              event.preventDefault();
-              $("#inputcity").val(ui.item.label);
-              var inputid = ui.item.value;
-              var formData = new FormData();
-              formData.set("userInput", inputid);
-              $.ajax({
-                  type: "POST",
-                  url: "/weatherdata",
-                  data: formData,
-                  contentType: false,
-                  processData: false,
-                  success: function(response) {
-
-                      let location = {};
-            
-                      
-                      let locationdata = response["city"]["coord"]
-                      location["lat"] = locationdata["lat"];
-                      location["lng"] = locationdata["lon"];
-
-                      initMap(location)
-                      response = response["list"]
-
-
-                      $(".infogroup").show();
-                      $("#map").show();
-                      console.log(response);
-                      for (i = 1; i < 6; i++) {
-                          $("#main" + i).text(Math.round(response[i - 1]["main"]["temp"] - 273.15) + "˚C");
-                          $("#windspeed" + i).text("Windspeed: " + response[i - 1]["wind"]["speed"] + "m/s");
-                          $("#humidity" + i).text("Humidity: " + response[i - 1]["main"]["humidity"]);
-                          $("#weatherstate" + i).text(response[i - 1]["weather"][0]["main"]);
-                          var weathercode = response[i - 1]["weather"][0]["id"];
-                          console.log(weathercode);
-                        
-                          $("#icon" + i).addClass("wi wi-owm-" + weathercode + " wi-fw");
-                      }
-                  }
-              });
-
-
-          },
-          focus: function(event, ui) {
-              event.preventDefault();
-              $("#inputcity").val(ui.item.label);
-          }
-      });
-  }
-
-  $.ui.autocomplete.filter = function(array, term) {
-      var matcher = new RegExp("^" + $.ui.autocomplete.escapeRegex(term), "i");
-      return $.grep(array, function(value) {
-          return matcher.test(value.label || value.value || value);
-      });
-
-  };
-
-
-
-</script>
+      
 
 </html>
 
