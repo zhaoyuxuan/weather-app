@@ -1,7 +1,8 @@
 var map;
 var marker;
-var location = {"lat": -25.363, "lng": 131.044};
-function initMap(location) {
+
+function initMap() {
+    var location = {"lat": -25.363, "lng": 131.044};
   
     map = new google.maps.Map(document.getElementById('map'), {
         zoom: 5,
@@ -79,12 +80,13 @@ $("#inputcity").autocomplete({
           
                 var latlng = new google.maps.LatLng(locationdata["lat"], locationdata["lon"]);
                 marker.setPosition(latlng);
+                map.setCenter(latLng);
               
                 response = response["list"];
 
                 $(".infogroup").show();
                 $("#map").show();
-                console.log(response);
+                
                 for (i = 1; i < 6; i++) {
                     $("#main" + i).text(Math.round(response[i - 1]["main"]["temp"] - 273.15) + "˚C");
                     $("#windspeed" + i).text("Windspeed: " + response[i - 1]["wind"]["speed"] + "m/s");
