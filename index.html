@@ -107,6 +107,9 @@
     </script>
     
     </div>
+    <script async defer
+    src="https://maps.googleapis.com/maps/api/js?key=AIzaSyBbeK2be4_yk5PnDfBdMhxqAB5YNfLbyuA&callback=initMap">
+    </script>
           
   </body>
 
@@ -178,12 +181,14 @@
 
                       $(".infogroup").show();
                       $("#map").show();
+                      console.log(response);
                       for (i = 1; i < 6; i++) {
                           $("#main" + i).text(Math.round(response[i - 1]["main"]["temp"] - 273.15) + "˚C");
                           $("#windspeed" + i).text("Windspeed: " + response[i - 1]["wind"]["speed"] + "m/s");
                           $("#humidity" + i).text("Humidity: " + response[i - 1]["main"]["humidity"]);
                           $("#weatherstate" + i).text(response[i - 1]["weather"][0]["main"]);
                           var weathercode = response[i - 1]["weather"][0]["id"];
+                          console.log(weathercode);
                         
                           $("#icon" + i).addClass("wi wi-owm-" + weathercode + " wi-fw");
                       }
@@ -210,8 +215,6 @@
 
 
 </script>
-<script async defer
-    src="https://maps.googleapis.com/maps/api/js?key=AIzaSyBbeK2be4_yk5PnDfBdMhxqAB5YNfLbyuA&callback=initMap">
-    </script>
+
 </html>
 
