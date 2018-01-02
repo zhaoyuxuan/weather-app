@@ -89,24 +89,22 @@
         <div class = col-md-1></div>
       </div>
       
-        <script type="text/javascript">
+      <script type="text/javascript">
       function initMap(location) {
-        
-        
-        var map = new google.maps.Map(document.getElementById('map'), {
-          zoom: 6,
-          center: location,
-          streetViewControl: false,
-          mapTypeControl: false
-        });
-        map.setOptions({
-        zoomControl: true,
-        gestureHandling: 'none'
-      });
-        var marker = new google.maps.Marker({
-          position: location,
-          map: map
-        });
+          var map = new google.maps.Map(document.getElementById('map'), {
+              zoom: 6,
+              center: location,
+              streetViewControl: false,
+              mapTypeControl: false
+          });
+          map.setOptions({
+              zoomControl: true,
+              gestureHandling: 'none'
+          });
+          var marker = new google.maps.Marker({
+              position: location,
+              map: map
+          });
       }
     </script>
     
@@ -118,7 +116,7 @@
 <script type="text/javascript">
   function getcityoption(){
     var formData = new FormData();
-    formData.set("userInput", "cityname");
+  
      $.ajax({
             type: "POST",
             url: "/citydata",
@@ -133,6 +131,8 @@
   
 </script>
 <script type="text/javascript">
+  getcityoption();
+  
   var citydata = JSON.parse(localStorage.citydata);
   var searchData = [];
   for (cityid in citydata) {
@@ -156,35 +156,38 @@
               var inputid = ui.item.value;
               var formData = new FormData();
               formData.set("userInput", inputid);
-            $.ajax({
-                type: "POST",
-                url: "/weatherdata",
-                data: formData,
-                contentType: false,
-                processData: false,
-                success: function(response) {
-                    console.log(response);
-                    let location = {lat: 53.55, lng: -113.47};
-                    let locationdata = response["city"]["coord"]
-                    location["lat"] = locationdata["lat"];
-                    location["lng"] = locationdata["lon"];
+              $.ajax({
+                  type: "POST",
+                  url: "/weatherdata",
+                  data: formData,
+                  contentType: false,
+                  processData: false,
+                  success: function(response) {
+                      console.log(response);
+                      let location = {
+                          lat: 53.55,
+                          lng: -113.47
+                      };
+                      let locationdata = response["city"]["coord"]
+                      location["lat"] = locationdata["lat"];
+                      location["lng"] = locationdata["lon"];
 
-                    initMap(location)
-                    response = response["list"]
+                      initMap(location)
+                      response = response["list"]
 
-                    
-                    $(".infogroup").show();
-                    $("#map").show();
-                    for (i = 1; i < 6; i++) { 
-                    $("#main"+i).text(Math.round(response[i-1]["main"]["temp"] - 273.15) + "˚C");
-                    $("#windspeed"+i).text("Windspeed: " + response[i-1]["wind"]["speed"] + "m/s");
-                    $("#humidity"+i).text("Humidity: " + response[i-1]["main"]["humidity"]);
-                    $("#weatherstate"+i).text(response[i-1]["weather"][0]["main"]);
-                    var weathercode = response[i-1]["weather"][0]["id"];
-                    $("#icon"+i).addClass("wi wi-owm-"+weathercode+" wi-fw");
+
+                      $(".infogroup").show();
+                      $("#map").show();
+                      for (i = 1; i < 6; i++) {
+                          $("#main" + i).text(Math.round(response[i - 1]["main"]["temp"] - 273.15) + "˚C");
+                          $("#windspeed" + i).text("Windspeed: " + response[i - 1]["wind"]["speed"] + "m/s");
+                          $("#humidity" + i).text("Humidity: " + response[i - 1]["main"]["humidity"]);
+                          $("#weatherstate" + i).text(response[i - 1]["weather"][0]["main"]);
+                          var weathercode = response[i - 1]["weather"][0]["id"];
+                          $("#icon" + i).addClass("wi wi-owm-" + weathercode + " wi-fw");
                       }
-                }
-            });
+                  }
+              });
 
 
           },
