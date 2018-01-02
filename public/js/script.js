@@ -5,7 +5,7 @@ function initMap() {
     var location = {"lat": -25.363, "lng": 131.044};
   
     map = new google.maps.Map(document.getElementById('map'), {
-        zoom: 5,
+        zoom: 7,
         center: location,
         streetViewControl: false,
         mapTypeControl: false
