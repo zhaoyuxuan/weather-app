@@ -1,51 +1,69 @@
-#title{
-	font-family:"Apercu";
-	padding-top: 2%;
-	font-size: 1.5em;
-	letter-spacing: 10px;
-	text-shadow: -1px 2px 20px grey;
+#title {
+    font-family: "Apercu";
+    padding-top: 2%;
+    font-size: 1.5em;
+    letter-spacing: 10px;
+    text-shadow: -1px 2px 20px grey;
 }
 
-.windspeed{
-	font-weight: bold;
-	/*margin-left: 10%;*/
-	padding-top: 5%;
+.windspeed {
+    font-weight: bold;
+    /*margin-left: 10%;*/
+    padding-top: 5%;
 }
-#inputcity{
-	 background: transparent;
-	 border: none;
-	 font-size: 1.6em;
-	 line-height: 2em;
-	 width: 30%;
 
-	 outline:none;
-	 background-color: #F9F9F9;
-   	 /*border-bottom: 1px solid #000000;*/
-   	 margin-top: 3%;
-}
-.maintemperature{
-	font-size: 1.6em;
-	margin-left: 6%;
-	/*text-align: center;*/
+#inputcity {
+    background: transparent;
+    border: none;
+    font-size: 1.6em;
+    line-height: 2em;
+    width: 30%;
 
+    outline: none;
+    background-color: #F9F9F9;
+    /*border-bottom: 1px solid #000000;*/
+    margin-top: 3%;
 }
-.weatherstate{
-	font-weight: bold;
+
+.maintemperature {
+    font-size: 1.6em;
+    margin-left: 6%;
+    /*text-align: center;*/
 }
-#image1{
-	padding-bottom: 5%;
+
+.weatherstate {
+    font-weight: bold;
 }
+
+#image1 {
+    padding-bottom: 5%;
+}
+
 ul.ui-autocomplete {
     list-style: none;
     list-style-type: none;
     padding: 0px;
     margin: 0px;
-   
 }
+
+#map {
+    height: 60vh;
+    width: 100%;
+    position: absolute;
+    top: 0;
+    bottom: -200px;
+    left: 0;
+    right: 0;
+    z-index: 0;
+    display: none;
+    `
+}
+
 
 /*.ui-menu .ui-menu-item a.ui-state-hover,{
    background-color: red;
 }*/
+
 
 /*ul.ui-autocomplete li:hover a
 {
@@ -54,7 +72,10 @@ ul.ui-autocomplete {
     background-image: none;
 }*/
 
-.ui-helper-hidden-accessible { display:none; }
-.ui-menu .ui-menu-item a{
-    background-color:#F9F9F9;
+.ui-helper-hidden-accessible {
+    display: none;
+}
+
+.ui-menu .ui-menu-item a {
+    background-color: #F9F9F9;
 }

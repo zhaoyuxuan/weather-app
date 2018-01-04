@@ -2,10 +2,10 @@ var map;
 var marker;
 
 function initMap() {
-    var location = {"lat": -25.363, "lng": 131.044};
+    var location = {"lat": 53.5444, "lng": 113.4909};
   
     map = new google.maps.Map(document.getElementById('map'), {
-        zoom: 7,
+        zoom: 6,
         center: location,
         streetViewControl: false,
         mapTypeControl: false
@@ -14,6 +14,7 @@ function initMap() {
         zoomControl: true,
         gestureHandling: 'none'
     });
+
     marker = new google.maps.Marker({
         position: location,
         map: map
@@ -79,13 +80,16 @@ $("#inputcity").autocomplete({
                 let locationdata = response["city"]["coord"]
           
                 var latlng = new google.maps.LatLng(locationdata["lat"], locationdata["lon"]);
+                $("#map").show();
+                initMap();
                 marker.setPosition(latlng);
                 map.setCenter(latlng);
               
                 response = response["list"];
 
                 $(".infogroup").show();
-                $("#map").show();
+                
+                
                 
                 for (i = 1; i < 6; i++) {
                     $("#main" + i).text(Math.round(response[i - 1]["main"]["temp"] - 273.15) + "˚C");

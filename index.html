@@ -1,6 +1,7 @@
 <!DOCTYPE html>
 <html>
-  <head>
+
+<head>
     <meta charset="utf-8">
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-beta.2/css/bootstrap.min.css" integrity="sha384-PsH8R72JQ3SOdhVi3uxftmaW6Vc51MKb0q5P2rRUpPvrszuE4W1povHYgTpBfshb" crossorigin="anonymous">
     <link rel="stylesheet" href="/css/styles.css">
@@ -11,88 +12,78 @@
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
     <script src="https://code.jquery.com/jquery-1.12.4.js"></script>
     <script src="https://code.jquery.com/ui/1.12.1/jquery-ui.js"></script>
-   
-    
-
-
     <title>Weather App</title>
-  </head>
-  <body>
+</head>
+
+<body>
     <div class="container-fluid">
-      <div class = "row justify-content-center" id ="title">
-        WEATHER APP
-      </div>
-
-      <div class = "row justify-content-center" >
-        <input type="text" id ="inputcity" placeholder="Enter City" list="cityList"></input>
-      </div>
-      <div class = "row infogroup" style= "margin-top: 10%; display:none">
-        <div class = col-md-1></div>
-        <div class = "col-md-2 text-center center-block"  id="first weather">
-          <i id="icon1"></i>
-          <div class = "maintemperature" id="main1">-80˚C</div>
-          <div class = "windspeed" id= "windspeed1" style="font-weight: bold;">Windspeed: &nbsp;-100˚C</div>
-          <div class = "humidity" id="humidity1" style="font-weight: bold;">Humidity: &nbsp;-100˚C</div>
-          <div style="padding-bottom: 1em;"></div>
-          <div class = "weatherstate text-center" id="weatherstate1">Sunny</div>
-          
+        <div style="height:60vh;">
+            <div class="row justify-content-center" id="title">
+                WEATHER APP
+            </div>
+            <div class="row justify-content-center">
+                <input type="text" id="inputcity" placeholder="Enter City" list="cityList"></input>
+            </div>
+            <div class="row infogroup" style="margin-top: 10%; display:none">
+                <div class=col-md-1></div>
+                <div class="col-md-2 text-center center-block" id="first weather">
+                    <i id="icon1"></i>
+                    <div class="maintemperature" id="main1">-80˚C</div>
+                    <div class="windspeed" id="windspeed1" style="font-weight: bold;">Windspeed: &nbsp;-100˚C</div>
+                    <div class="humidity" id="humidity1" style="font-weight: bold;">Humidity: &nbsp;-100˚C</div>
+                    <div style="padding-bottom: 1em;"></div>
+                    <div class="weatherstate text-center" id="weatherstate1">Sunny</div>
+                </div>
+                <div class="col-md-2 text-center center-block" id="first weather">
+                    <i id="icon2"></i>
+                    <div class="maintemperature" id="main2">-80˚C</div>
+                    <div class="windspeed" id="windspeed2" style="font-weight: bold;">Windspeed: &nbsp;-100˚C</div>
+                    <div class="humidity" id="humidity2" style="font-weight: bold;">Humidity: &nbsp;-100˚C</div>
+                    <div style="padding-bottom: 1em;"></div>
+                    <div class="weatherstate text-center" id="weatherstate2">Sunny</div>
+                </div>
+                <div class="col-md-2 text-center center-block" id="first weather">
+                    <i id="icon3"></i>
+                    <div class="maintemperature" id="main3">-80˚C</div>
+                    <div class="windspeed" id="windspeed3" style="font-weight: bold;">Windspeed: &nbsp;-100˚C</div>
+                    <div class="humidity" id="humidity3" style="font-weight: bold;">Humidity: &nbsp;-100˚C</div>
+                    <div style="padding-bottom: 1em;"></div>
+                    <div class="weatherstate text-center" id="weatherstate3">Sunny</div>
+                </div>
+                <div class="col-md-2 text-center center-block" id="first weather">
+                    <i id="icon4"></i>
+                    <div class="maintemperature" id="main4">-80˚C</div>
+                    <div class="windspeed" id="windspeed4" style="font-weight: bold;">Windspeed: &nbsp;-100˚C</div>
+                    <div class="humidity" id="humidity4" style="font-weight: bold;">Humidity: &nbsp;-100˚C</div>
+                    <div style="padding-bottom: 1em;"></div>
+                    <div class="weatherstate text-center" id="weatherstate4">Sunny</div>
+                </div>
+                <div class="col-md-2 text-center center-block" id="first weather">
+                    <i id="icon5"></i>
+                    <div class="maintemperature" id="main5">-80˚C</div>
+                    <div class="windspeed" id="windspeed5" style="font-weight: bold;">Windspeed: &nbsp;-100˚C</div>
+                    <div class="humidity" id="humidity5" style="font-weight: bold;">Humidity: &nbsp;-100˚C</div>
+                    <div style="padding-bottom: 1em;"></div>
+                    <div class="weatherstate text-center" id="weatherstate5">Sunny</div>
+                </div>
+                <div class=c ol-md-1></div>
+            </div>
         </div>
-         <div class = "col-md-2 text-center center-block"  id="first weather">
-          <i id="icon2"></i>
-          <div class = "maintemperature" id="main2">-80˚C</div>
-          <div class = "windspeed" id= "windspeed2" style="font-weight: bold;">Windspeed: &nbsp;-100˚C</div>
-          <div class = "humidity" id="humidity2" style="font-weight: bold;">Humidity: &nbsp;-100˚C</div>
-          <div style="padding-bottom: 1em;"></div>
-          <div class = "weatherstate text-center" id="weatherstate2">Sunny</div>
-          
-        </div>
-         <div class = "col-md-2 text-center center-block"  id="first weather">
-          <i id="icon3"></i>
-          <div class = "maintemperature" id="main3">-80˚C</div>
-          <div class = "windspeed" id= "windspeed3" style="font-weight: bold;">Windspeed: &nbsp;-100˚C</div>
-          <div class = "humidity" id="humidity3" style="font-weight: bold;">Humidity: &nbsp;-100˚C</div>
-          <div style="padding-bottom: 1em;"></div>
-          <div class = "weatherstate text-center" id="weatherstate3">Sunny</div>
-          
-        </div>
-         <div class = "col-md-2 text-center center-block"  id="first weather">
-          <i id="icon4"></i>
-          <div class = "maintemperature" id="main4">-80˚C</div>
-          <div class = "windspeed" id= "windspeed4" style="font-weight: bold;">Windspeed: &nbsp;-100˚C</div>
-          <div class = "humidity" id="humidity4" style="font-weight: bold;">Humidity: &nbsp;-100˚C</div>
-          <div style="padding-bottom: 1em;"></div>
-          <div class = "weatherstate text-center" id="weatherstate4">Sunny</div>
-          
-        </div>
-         <div class = "col-md-2 text-center center-block" id="first weather">
-          <i id="icon5"></i>
-          <div class = "maintemperature" id="main5">-80˚C</div>
-          <div class = "windspeed" id= "windspeed5" style="font-weight: bold;">Windspeed: &nbsp;-100˚C</div>
-          <div class = "humidity" id="humidity5" style="font-weight: bold;">Humidity: &nbsp;-100˚C</div>
-          <div style="padding-bottom: 1em;"></div>
-          <div class = "weatherstate text-center" id="weatherstate5">Sunny</div>
-
-          
-        </div>
-
-        <div class = col-md-1></div>
-    
-      </div>
-      <div class = "row">
-        <div class = col-md-1></div>
-        <div class = col-md-10>
-          <div class = "row" id="map" style='height: 100%;background-color:#08c;width: 100% ;padding-bottom:35%;margin-top: 5%; display: none'></div>
-          
-        </div>
-        <div class = col-md-1></div>
-      </div>
     </div>
-     <script async defer
-    src="https://maps.googleapis.com/maps/api/js?key=AIzaSyBbeK2be4_yk5PnDfBdMhxqAB5YNfLbyuA&callback=initMap">
-    </script>
-     <script type="text/javascript" src="/js/script.js"></script>
-  </body>
-      
+    </div>
+    </div>
+    </div>
+    <div class="row">
+        <div class="col-md-1"></div>
+        <div class="col-md-10">
+            hahahahahmap
+            <div id="map"></div>
+        </div>
+        <div class="col-md-1"></div>
+    </div>
+</body>
+<script type="text/javascript" src="/js/script.js"></script>
+<script async defer src="https://maps.googleapis.com/maps/api/js?key=AIzaSyBbeK2be4_yk5PnDfBdMhxqAB5YNfLbyuA&callback=initMap">
+</script>
 
 </html>
-
