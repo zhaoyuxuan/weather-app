@@ -61,6 +61,7 @@ $("#inputcity").autocomplete({
         response(results.slice(0, 10));
 
     },
+    minLength: 2,
     select: function(event, ui) {
         event.preventDefault();
         $("#inputcity").val(ui.item.label);
@@ -87,7 +88,6 @@ $("#inputcity").autocomplete({
                 response = response["list"];
 
                 $(".infogroup").show();
-                
                 
                 for (i = 1; i < 6; i++) {
                     $("#main" + i).text(Math.round(response[i - 1]["main"]["temp"] - 273.15) + "˚C");
