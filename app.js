@@ -35,6 +35,11 @@ app.post('/weatherdata', function(request, response) {
     });
 });
 
+app.get('/61b47', function(request, response) {
+    response.send("61b47");
+});
+
+
 
 
 app.post('/citydata', function(req, res) {
