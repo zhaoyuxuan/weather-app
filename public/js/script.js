@@ -61,7 +61,7 @@ $("#inputcity").autocomplete({
         response(results.slice(0, 10));
 
     },
-    minLength: 2,
+    minLength: 1,
     select: function(event, ui) {
         event.preventDefault();
         $("#inputcity").val(ui.item.label);
