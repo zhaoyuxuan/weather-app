@@ -66,7 +66,7 @@ $("#inputcity").autocomplete({
         $("#inputcity").val(ui.item.label);
         var inputid = ui.item.value;
         var formData = new FormData();
-        formData.set("userInput", inputid);
+        formData.append("userInput", inputid);
         $.ajax({
             type: "POST",
             url: "/weatherdata",
@@ -76,7 +76,6 @@ $("#inputcity").autocomplete({
             success: function(response) {
 
                 let location = {};
-
                 let locationdata = response["city"]["coord"]
           
                 var latlng = new google.maps.LatLng(locationdata["lat"], locationdata["lon"]);
@@ -90,7 +89,6 @@ $("#inputcity").autocomplete({
                 $(".infogroup").show();
                 
                 
-                
                 for (i = 1; i < 6; i++) {
                     $("#main" + i).text(Math.round(response[i - 1]["main"]["temp"] - 273.15) + "˚C");
                     $("#windspeed" + i).text("Windspeed: " + response[i - 1]["wind"]["speed"] + "m/s");
@@ -98,7 +96,6 @@ $("#inputcity").autocomplete({
                     $("#weatherstate" + i).text(response[i - 1]["weather"][0]["main"]);
                     var weathercode = response[i - 1]["weather"][0]["id"];
                     
-
                     $("#icon" + i).addClass("wi wi-owm-" + weathercode + " wi-fw");
                 }
             }
